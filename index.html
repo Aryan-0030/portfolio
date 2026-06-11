@@ -1,1027 +1,1277 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aryan Tiwari — Developer & Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --blue-deep: #1228E8;
-    --blue-mid: #2D4EF5;
-    --blue-light: #5577FF;
-    --blue-sky: #7EA8FF;
-    --orange: #E8631A;
-    --orange-light: #FF8C42;
-    --black: #0A0A0F;
-    --white: #F5F5F0;
-    --glass: rgba(255,255,255,0.08);
-    --glass-border: rgba(255,255,255,0.15);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-  }
-
-  /* ===== NAVBAR ===== */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 40px;
-    background: rgba(10,10,15,0.6);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    text-decoration: none;
-  }
-
-  .logo-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--blue-deep);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    color: #fff;
-    font-family: 'Anton', sans-serif;
-    letter-spacing: 0;
-    transition: transform 0.3s ease;
-  }
-  .logo:hover .logo-icon { transform: rotate(-5deg) scale(1.1); }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: all 0.25s ease;
-    position: relative;
-  }
-  .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
-
-  .nav-cta {
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 0.78rem !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    color: var(--white) !important;
-    text-decoration: none;
-    padding: 9px 18px !important;
-    border: 1.5px solid var(--white) !important;
-    border-radius: 6px !important;
-    transition: all 0.3s ease !important;
-    background: transparent !important;
-  }
-  .nav-cta:hover {
-    background: var(--white) !important;
-    color: var(--black) !important;
-    box-shadow: 0 0 20px rgba(255,255,255,0.2) !important;
-  }
-
-  .nav-resume {
-    font-family: 'Syne', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 0.78rem !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    color: #fff !important;
-    text-decoration: none;
-    padding: 9px 18px !important;
-    border: 1.5px solid var(--orange) !important;
-    border-radius: 6px !important;
-    transition: all 0.3s ease !important;
-    background: var(--orange) !important;
-  }
-  .nav-resume:hover {
-    background: var(--orange-light) !important;
-    border-color: var(--orange-light) !important;
-    box-shadow: 0 0 20px rgba(232,99,26,0.45) !important;
-    transform: translateY(-1px) !important;
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: linear-gradient(135deg, #0A1AE8 0%, #1A2FF5 30%, #2D50F7 60%, #5580FF 100%);
-  }
-
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.25;
-    animation: float 8s ease-in-out infinite;
-  }
-  .blob-1 { width: 500px; height: 300px; background: #7EA8FF; top: -80px; left: -100px; animation-delay: 0s; }
-  .blob-2 { width: 400px; height: 250px; background: #3366FF; top: 20%; right: -50px; animation-delay: 2s; }
-  .blob-3 { width: 350px; height: 200px; background: #85AAFF; bottom: 10%; left: 20%; animation-delay: 4s; }
-  .blob-4 { width: 250px; height: 150px; background: #5577FF; top: 50%; right: 30%; animation-delay: 6s; }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.05); }
-  }
-
-  .cloud {
-    position: absolute;
-    opacity: 0.12;
-    animation: driftCloud 12s ease-in-out infinite;
-  }
-
-  @keyframes driftCloud {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(20px); }
-  }
-
-  .hero-inner {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 100px 40px 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 40px;
-    min-height: 100vh;
-  }
-
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .hero-box {
-    border: 1.5px solid rgba(0,0,0,0.35);
-    background: rgba(255,255,255,0.09);
-    backdrop-filter: blur(8px);
-    border-radius: 16px;
-    padding: 36px 40px;
-    animation: fadeSlideUp 0.8s ease both;
-  }
-
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hey-text {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(5rem, 10vw, 9rem);
-    line-height: 0.9;
-    color: var(--black);
-    letter-spacing: -0.02em;
-    display: block;
-    margin-bottom: 20px;
-    text-shadow: 2px 4px 0px rgba(0,0,0,0.15);
-  }
-
-  .hero-intro {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    line-height: 1.75;
-    color: rgba(0,0,0,0.8);
-    max-width: 340px;
-  }
-
-  .hero-intro strong { font-weight: 700; color: var(--black); }
-
-  .hero-divider {
-    width: 48px;
-    height: 3px;
-    background: var(--black);
-    border-radius: 2px;
-    margin: 16px 0;
-    opacity: 0.4;
-  }
-
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .tag {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.6);
-    border: 1px solid rgba(0,0,0,0.25);
-    padding: 5px 12px;
-    border-radius: 100px;
-    background: rgba(0,0,0,0.05);
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    animation: fadeSlideUp 0.8s ease 0.2s both;
-  }
-
-  .btn-primary {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: var(--black);
-    color: var(--white);
-    border: none;
-    padding: 14px 28px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: #111; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-
-  .btn-secondary {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: transparent;
-    color: var(--white);
-    border: 1.5px solid rgba(255,255,255,0.5);
-    padding: 14px 28px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-  }
-  .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-
-  .hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    height: 100%;
-    min-height: 500px;
-    animation: fadeSlideUp 0.8s ease 0.1s both;
-  }
-
-  .avatar-wrap {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    animation: avatarFloat 6s ease-in-out infinite;
-  }
-
-  @keyframes avatarFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-18px); }
-  }
-
-  .avatar-wrap svg {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 30px 60px rgba(0,0,30,0.4));
-  }
-
-  /* ===== SECTIONS ===== */
-  .section {
-    padding: 100px 40px;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--blue-sky);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    color: var(--white);
-    letter-spacing: -0.01em;
-    line-height: 1;
-    margin-bottom: 60px;
-  }
-
-  /* ===== SKILLS ===== */
-  #skills {
-    background: linear-gradient(180deg, var(--black) 0%, #0A0F1A 100%);
-    padding: 100px 0;
-  }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-  }
-
-  .skill-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 24px;
-    transition: all 0.3s ease;
-  }
-  .skill-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-4px); border-color: rgba(255,255,255,0.25); }
-
-  .skill-card-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--blue-sky);
-    margin-bottom: 10px;
-  }
-
-  .skill-card-items {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.8;
-  }
-
-  /* ===== PROJECTS ===== */
-  #Home { background: var(--black); }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 24px;
-  }
-
-  .project-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 32px;
-    transition: all 0.35s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--blue-deep), var(--blue-light));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-
-  .project-period {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--orange-light);
-    margin-bottom: 10px;
-  }
-
-  .project-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-
-  .project-stack {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 16px;
-    font-style: italic;
-  }
-
-  .project-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.75);
-  }
-
-  .project-desc li {
-    list-style: none;
-    padding-left: 16px;
-    position: relative;
-    margin-bottom: 6px;
-  }
-  .project-desc li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--blue-sky);
-  }
-
-  /* ===== HACKATHON ===== */
-  #h {
-    background: linear-gradient(180deg, #0A0F1A 0%, #070C18 100%);
-    padding: 100px 0;
-  }
-
-  .hack-card {
-    background: linear-gradient(135deg, rgba(18,40,232,0.2), rgba(18,40,232,0.05));
-    border: 1px solid rgba(18,40,232,0.4);
-    border-radius: 16px;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 40px;
-  }
-
-  .hack-badge {
-    background: var(--orange);
-    color: #fff;
-    font-family: 'Anton', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    padding: 10px 20px;
-    border-radius: 8px;
-    white-space: nowrap;
-    text-align: center;
-    line-height: 1.3;
-    box-shadow: 0 4px 20px rgba(232,99,26,0.4);
-  }
-
-  /* ===== ACHIEVEMENTS ===== */
-  #about { background: var(--black); }
-
-  .achieve-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .achieve-item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 10px;
-    padding: 18px 24px;
-    transition: all 0.3s ease;
-  }
-  .achieve-item:hover { background: rgba(255,255,255,0.1); transform: translateX(6px); }
-
-  .achieve-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--orange);
-    flex-shrink: 0;
-    box-shadow: 0 0 8px rgba(232,99,26,0.5);
-  }
-
-  .achieve-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.85);
-  }
-
-  /* ===== CONTACT ===== */
-  #contact {
-    background: linear-gradient(135deg, #0F1ED0 0%, #1228E8 50%, #2030D8 100%);
-    padding: 100px 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #contact::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    top: -200px; right: -200px;
-  }
-
-  .contact-inner {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .contact-left .section-title { color: #fff; margin-bottom: 20px; }
-
-  .contact-sub {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  .contact-link:hover { color: #fff; }
-  .contact-link-icon { font-size: 1.1rem; }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .form-input {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 10px;
-    padding: 14px 18px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: #fff;
-    outline: none;
-    transition: border-color 0.3s ease;
-    width: 100%;
-  }
-  .form-input::placeholder { color: rgba(255,255,255,0.35); }
-  .form-input:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.12); }
-  textarea.form-input { resize: vertical; min-height: 120px; }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: var(--black);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 28px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .footer-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.4);
-  }
-
-  .footer-text span { color: var(--blue-sky); font-weight: 500; }
-
-  /* ===== MOBILE ===== */
-  @media (max-width: 900px) {
-    nav { padding: 14px 20px; }
-    .nav-links { display: none; }
-    .hero-inner { grid-template-columns: 1fr; padding: 90px 20px 40px; gap: 20px; }
-    .hero-right { min-height: 320px; order: -1; }
-    .avatar-wrap { max-width: 300px; }
-    .section { padding: 70px 20px; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hack-card { grid-template-columns: 1fr; }
-    footer { flex-direction: column; text-align: center; }
-  }
-
-  @media (max-width: 600px) {
-    .hey-text { font-size: 4.5rem; }
-    .hero-box { padding: 24px; }
-    .section-title { font-size: 2.2rem; }
-  }
-
-  .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 6px;
-  }
-  .nav-hamburger span {
-    width: 24px; height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    display: block;
-  }
-
-  @media (max-width: 900px) { .nav-hamburger { display: flex; } }
-
-  /* ===== EDUCATION ===== */
-  .edu-grid { display: flex; flex-direction: column; gap: 16px; }
-
-  .edu-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 24px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    transition: all 0.3s ease;
-  }
-  .edu-card:hover { background: rgba(255,255,255,0.1); }
-
-  .edu-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: 4px; }
-  .edu-sub { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.55); }
-  .edu-right { text-align: right; flex-shrink: 0; }
-  .edu-year { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--blue-sky); letter-spacing: 0.1em; margin-bottom: 4px; }
-  .edu-score { font-family: 'Anton', sans-serif; font-size: 1.3rem; color: var(--orange-light); letter-spacing: 0.05em; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aryan Tiwari — Developer & Designer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --blue-deep: #1228E8;
+      --blue-mid: #2D4EF5;
+      --blue-light: #5577FF;
+      --blue-sky: #7EA8FF;
+      --orange: #E8631A;
+      --orange-light: #FF8C42;
+      --black: #0A0A0F;
+      --white: #F5F5F0;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.15);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(10, 10, 15, 0.6);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--blue-deep);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-cta {
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: var(--white) !important;
+      text-decoration: none;
+      padding: 9px 18px !important;
+      border: 1.5px solid var(--white) !important;
+      border-radius: 6px !important;
+      transition: all 0.3s ease !important;
+      background: transparent !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--white) !important;
+      color: var(--black) !important;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .nav-resume {
+      font-family: 'Syne', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: #fff !important;
+      text-decoration: none;
+      padding: 9px 18px !important;
+      border: 1.5px solid var(--orange) !important;
+      border-radius: 6px !important;
+      transition: all 0.3s ease !important;
+      background: var(--orange) !important;
+    }
+
+    .nav-resume:hover {
+      background: var(--orange-light) !important;
+      border-color: var(--orange-light) !important;
+      box-shadow: 0 0 20px rgba(232, 99, 26, 0.45) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0A1AE8 0%, #1A2FF5 30%, #2D50F7 60%, #5580FF 100%);
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.25;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .blob-1 {
+      width: 500px;
+      height: 300px;
+      background: #7EA8FF;
+      top: -80px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 250px;
+      background: #3366FF;
+      top: 20%;
+      right: -50px;
+      animation-delay: 2s;
+    }
+
+    .blob-3 {
+      width: 350px;
+      height: 200px;
+      background: #85AAFF;
+      bottom: 10%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+
+    .blob-4 {
+      width: 250px;
+      height: 150px;
+      background: #5577FF;
+      top: 50%;
+      right: 30%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.05);
+      }
+    }
+
+    .cloud {
+      position: absolute;
+      opacity: 0.12;
+      animation: driftCloud 12s ease-in-out infinite;
+    }
+
+    @keyframes driftCloud {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(20px);
+      }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 40px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      min-height: 100vh;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-box {
+      border: 1.5px solid rgba(0, 0, 0, 0.35);
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 36px 40px;
+      animation: fadeSlideUp 0.8s ease both;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hey-text {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(5rem, 10vw, 9rem);
+      line-height: 0.9;
+      color: var(--black);
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 20px;
+      text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero-intro {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(0, 0, 0, 0.8);
+      max-width: 340px;
+    }
+
+    .hero-intro strong {
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--black);
+      border-radius: 2px;
+      margin: 16px 0;
+      opacity: 0.4;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeSlideUp 0.8s ease 0.2s both;
+    }
+
+    .btn-primary {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #111;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-secondary {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      padding: 14px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+      height: 100%;
+      min-height: 500px;
+      animation: fadeSlideUp 0.8s ease 0.1s both;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      animation: avatarFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes avatarFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    .avatar-wrap svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 30, 0.4));
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 100px 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-sky);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--white);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      margin-bottom: 60px;
+    }
+
+    /* ===== SKILLS ===== */
+    #skills {
+      background: linear-gradient(180deg, var(--black) 0%, #0A0F1A 100%);
+      padding: 100px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .skill-card-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue-sky);
+      margin-bottom: 10px;
+    }
+
+    .skill-card-items {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.8;
+    }
+
+    /* ===== PROJECTS ===== */
+    #Home {
+      background: var(--black);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-deep), var(--blue-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-period {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange-light);
+      margin-bottom: 10px;
+    }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .project-stack {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .project-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .project-desc li {
+      list-style: none;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .project-desc li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--blue-sky);
+    }
+
+    /* ===== HACKATHON ===== */
+    #h {
+      background: linear-gradient(180deg, #0A0F1A 0%, #070C18 100%);
+      padding: 100px 0;
+    }
+
+    .hack-card {
+      background: linear-gradient(135deg, rgba(18, 40, 232, 0.2), rgba(18, 40, 232, 0.05));
+      border: 1px solid rgba(18, 40, 232, 0.4);
+      border-radius: 16px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 40px;
+    }
+
+    .hack-badge {
+      background: var(--orange);
+      color: #fff;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      padding: 10px 20px;
+      border-radius: 8px;
+      white-space: nowrap;
+      text-align: center;
+      line-height: 1.3;
+      box-shadow: 0 4px 20px rgba(232, 99, 26, 0.4);
+    }
+
+    /* ===== ACHIEVEMENTS ===== */
+    #about {
+      background: var(--black);
+    }
+
+    .achieve-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .achieve-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 18px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .achieve-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(6px);
+    }
+
+    .achieve-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(232, 99, 26, 0.5);
+    }
+
+    .achieve-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: linear-gradient(135deg, #0F1ED0 0%, #1228E8 50%, #2030D8 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      top: -200px;
+      right: -200px;
+    }
+
+    .contact-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-left .section-title {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .contact-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      color: #fff;
+    }
+
+    .contact-link-icon {
+      font-size: 1.1rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s ease;
+      width: 100%;
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .form-input:focus {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .footer-text span {
+      color: var(--blue-sky);
+      font-weight: 500;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 900px) {
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 90px 20px 40px;
+        gap: 20px;
+      }
+
+      .hero-right {
+        min-height: 320px;
+        order: -1;
+      }
+
+      .avatar-wrap {
+        max-width: 300px;
+      }
+
+      .section {
+        padding: 70px 20px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hack-card {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hey-text {
+        font-size: 4.5rem;
+      }
+
+      .hero-box {
+        padding: 24px;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .nav-hamburger {
+        display: flex;
+      }
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .edu-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      transition: all 0.3s ease;
+    }
+
+    .edu-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .edu-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .edu-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .edu-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .edu-year {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--blue-sky);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .edu-score {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.3rem;
+      color: var(--orange-light);
+      letter-spacing: 0.05em;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav>
-  <a href="#" class="logo">
-    <div class="logo-icon">AT</div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#lab">Lab</a></li>
-    <li><a href="https://github.com/Aryan-0030/portfolio.git
-      " class="nav-resume" target="_blank" download>Resume ↓</a></li>
-    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
-  </ul>
-  <div class="nav-hamburger" onclick="toggleMenu(this)">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">AT</div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#lab">Lab</a></li>
+      <li><a href="https://resumehost-f4e18.web.app/AryanResume.pdf" class="nav-resume" target="_blank">
+          Resume ↓
+        </a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="blob blob-4"></div>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
 
-  <svg class="cloud" style="top:5%;left:5%;width:220px;opacity:0.1" viewBox="0 0 200 100" fill="white">
-    <ellipse cx="100" cy="70" rx="80" ry="30"/>
-    <ellipse cx="70" cy="55" rx="45" ry="35"/>
-    <ellipse cx="130" cy="50" rx="40" ry="30"/>
-    <ellipse cx="100" cy="40" rx="35" ry="28"/>
-  </svg>
-  <svg class="cloud" style="top:15%;right:5%;width:300px;opacity:0.08;animation-delay:3s" viewBox="0 0 200 100" fill="white">
-    <ellipse cx="100" cy="70" rx="90" ry="28"/>
-    <ellipse cx="65" cy="50" rx="50" ry="38"/>
-    <ellipse cx="140" cy="45" rx="45" ry="32"/>
-    <ellipse cx="105" cy="35" rx="38" ry="30"/>
-  </svg>
-  <svg class="cloud" style="bottom:20%;left:15%;width:180px;opacity:0.09;animation-delay:5s" viewBox="0 0 200 100" fill="white">
-    <ellipse cx="100" cy="70" rx="75" ry="25"/>
-    <ellipse cx="75" cy="52" rx="42" ry="32"/>
-    <ellipse cx="125" cy="48" rx="38" ry="28"/>
-  </svg>
+    <svg class="cloud" style="top:5%;left:5%;width:220px;opacity:0.1" viewBox="0 0 200 100" fill="white">
+      <ellipse cx="100" cy="70" rx="80" ry="30" />
+      <ellipse cx="70" cy="55" rx="45" ry="35" />
+      <ellipse cx="130" cy="50" rx="40" ry="30" />
+      <ellipse cx="100" cy="40" rx="35" ry="28" />
+    </svg>
+    <svg class="cloud" style="top:15%;right:5%;width:300px;opacity:0.08;animation-delay:3s" viewBox="0 0 200 100"
+      fill="white">
+      <ellipse cx="100" cy="70" rx="90" ry="28" />
+      <ellipse cx="65" cy="50" rx="50" ry="38" />
+      <ellipse cx="140" cy="45" rx="45" ry="32" />
+      <ellipse cx="105" cy="35" rx="38" ry="30" />
+    </svg>
+    <svg class="cloud" style="bottom:20%;left:15%;width:180px;opacity:0.09;animation-delay:5s" viewBox="0 0 200 100"
+      fill="white">
+      <ellipse cx="100" cy="70" rx="75" ry="25" />
+      <ellipse cx="75" cy="52" rx="42" ry="32" />
+      <ellipse cx="125" cy="48" rx="38" ry="28" />
+    </svg>
 
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-box">
-        <span class="hey-text">HEY!</span>
-        <div class="hero-divider"></div>
-        <p class="hero-intro">
-          You've arrived at the portfolio of <strong>Aryan Tiwari</strong> — a Computer Science undergraduate, backend developer & AI enthusiast based in <strong>Kanpur, UP</strong>. Feel free to explore my projects and a few of my favourite builds.
-        </p>
-        <div class="hero-tags" style="margin-top:18px">
-          <span class="tag">Spring Boot</span>
-          <span class="tag">Python</span>
-          <span class="tag">Deep Learning</span>
-          <span class="tag">Cyber Security</span>
-          <span class="tag">Full Stack</span>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-box">
+          <span class="hey-text">HEY!</span>
+          <div class="hero-divider"></div>
+          <p class="hero-intro">
+            You've arrived at the portfolio of <strong>Aryan Tiwari</strong> — a Computer Science undergraduate, backend
+            developer & AI enthusiast based in <strong>Kanpur, UP</strong>. Feel free to explore my projects and a few
+            of my favourite builds.
+          </p>
+          <div class="hero-tags" style="margin-top:18px">
+            <span class="tag">Spring Boot</span>
+            <span class="tag">Python</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Cyber Security</span>
+            <span class="tag">Full Stack</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#work" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-secondary">Get In Touch</a>
         </div>
       </div>
-      <div class="hero-actions">
-        <a href="#work" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-secondary">Get In Touch</a>
+
+      <div class="hero-right">
+        <div class="avatar-wrap">
+          <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <ellipse cx="240" cy="560" rx="200" ry="80" fill="#1A0800" opacity="0.25" />
+            <path d="M60 600 C60 480 130 420 180 410 L300 410 C350 420 420 480 420 600Z" fill="#8B4513" />
+            <path d="M60 600 C60 510 100 450 160 430 C140 450 130 490 130 550Z" fill="#E8DCC8" />
+            <path d="M420 600 C420 510 380 450 320 430 C340 450 350 490 350 550Z" fill="#E8DCC8" />
+            <path d="M80 490 L80 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4" />
+            <path d="M105 470 L105 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4" />
+            <path d="M130 455 L130 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.3" />
+            <path d="M360 455 L360 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.3" />
+            <path d="M385 470 L385 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4" />
+            <path d="M400 490 L400 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4" />
+            <rect x="205" y="400" width="70" height="50" rx="8" fill="#1A1A2E" />
+            <ellipse cx="240" cy="270" rx="130" ry="150" fill="#C8935A" />
+            <ellipse cx="112" cy="285" rx="22" ry="26" fill="#C8935A" />
+            <ellipse cx="112" cy="285" rx="13" ry="16" fill="#B07840" />
+            <ellipse cx="368" cy="285" rx="22" ry="26" fill="#C8935A" />
+            <ellipse cx="368" cy="285" rx="13" ry="16" fill="#B07840" />
+            <path d="M145 340 Q160 430 240 445 Q320 430 335 340 Q310 380 240 388 Q170 380 145 340Z" fill="#5C3317" />
+            <path d="M175 355 Q200 390 240 395 Q280 390 305 355 Q285 375 240 380 Q195 375 175 355Z" fill="#7A4422"
+              opacity="0.5" />
+            <path d="M200 320 Q220 335 240 332 Q260 335 280 320 Q265 330 240 327 Q215 330 200 320Z" fill="#5C3317" />
+            <path d="M210 345 Q240 365 270 345" stroke="#7A4422" stroke-width="3" fill="none" stroke-linecap="round" />
+            <ellipse cx="240" cy="305" rx="20" ry="14" fill="#B07840" />
+            <circle cx="230" cy="308" r="5" fill="#9A6530" opacity="0.6" />
+            <circle cx="250" cy="308" r="5" fill="#9A6530" opacity="0.6" />
+            <ellipse cx="190" cy="265" rx="30" ry="22" fill="#2A1800" opacity="0.15" />
+            <rect x="158" y="248" width="58" height="40" rx="10" fill="none" stroke="#1A0A00" stroke-width="5" />
+            <ellipse cx="187" cy="268" rx="22" ry="16" fill="#F5F0E8" />
+            <circle cx="190" cy="270" r="10" fill="#5C3317" />
+            <circle cx="190" cy="270" r="6" fill="#3D2410" />
+            <circle cx="186" cy="266" r="3" fill="#fff" opacity="0.7" />
+            <rect x="264" y="248" width="58" height="40" rx="10" fill="none" stroke="#1A0A00" stroke-width="5" />
+            <ellipse cx="293" cy="268" rx="22" ry="16" fill="#F5F0E8" />
+            <circle cx="292" cy="270" r="10" fill="#5C3317" />
+            <circle cx="292" cy="270" r="6" fill="#3D2410" />
+            <circle cx="288" cy="266" r="3" fill="#fff" opacity="0.7" />
+            <line x1="216" y1="268" x2="264" y2="268" stroke="#1A0A00" stroke-width="5" stroke-linecap="round" />
+            <line x1="158" y1="265" x2="112" y2="275" stroke="#1A0A00" stroke-width="4.5" stroke-linecap="round" />
+            <line x1="322" y1="265" x2="368" y2="275" stroke="#1A0A00" stroke-width="4.5" stroke-linecap="round" />
+            <path d="M162 244 Q190 232 218 242" stroke="#3D2410" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M262 242 Q292 232 318 244" stroke="#3D2410" stroke-width="5" fill="none" stroke-linecap="round" />
+            <path d="M95 185 Q240 165 385 185 L380 200 Q240 182 100 200Z" fill="#1A0A00" />
+            <path d="M110 185 Q140 100 240 90 Q340 100 370 185Z" fill="#E8631A" />
+            <path d="M240 90 L240 185" stroke="#CF5510" stroke-width="2.5" opacity="0.6" />
+            <path d="M175 95 Q190 155 200 185" stroke="#CF5510" stroke-width="2" opacity="0.5" />
+            <path d="M305 95 Q290 155 280 185" stroke="#CF5510" stroke-width="2" opacity="0.5" />
+            <path d="M310 92 Q360 100 375 185 L390 185 Q385 95 310 85Z" fill="#7A7A7A" />
+            <path d="M340 95 Q360 130 370 185" stroke="#656565" stroke-width="2" opacity="0.6" />
+            <circle cx="240" cy="92" r="8" fill="#CF5510" />
+            <path d="M110 185 Q120 195 130 200 Q240 195 350 200 Q360 195 370 185" fill="#2A1800" opacity="0.3" />
+            <rect x="18" y="380" width="90" height="32" rx="8" fill="rgba(18,40,232,0.85)" />
+            <text x="30" y="400" font-family="monospace" font-size="11" fill="#7EA8FF">&lt;dev /&gt;</text>
+            <rect x="370" y="320" width="82" height="30" rx="8" fill="rgba(232,99,26,0.85)" />
+            <text x="382" y="340" font-family="monospace" font-size="10" fill="#fff">Python</text>
+          </svg>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="hero-right">
-      <div class="avatar-wrap">
-        <svg viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg" fill="none">
-          <ellipse cx="240" cy="560" rx="200" ry="80" fill="#1A0800" opacity="0.25"/>
-          <path d="M60 600 C60 480 130 420 180 410 L300 410 C350 420 420 480 420 600Z" fill="#8B4513"/>
-          <path d="M60 600 C60 510 100 450 160 430 C140 450 130 490 130 550Z" fill="#E8DCC8"/>
-          <path d="M420 600 C420 510 380 450 320 430 C340 450 350 490 350 550Z" fill="#E8DCC8"/>
-          <path d="M80 490 L80 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4"/>
-          <path d="M105 470 L105 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4"/>
-          <path d="M130 455 L130 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.3"/>
-          <path d="M360 455 L360 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.3"/>
-          <path d="M385 470 L385 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4"/>
-          <path d="M400 490 L400 600" stroke="#6B3410" stroke-width="4" stroke-opacity="0.4"/>
-          <rect x="205" y="400" width="70" height="50" rx="8" fill="#1A1A2E"/>
-          <ellipse cx="240" cy="270" rx="130" ry="150" fill="#C8935A"/>
-          <ellipse cx="112" cy="285" rx="22" ry="26" fill="#C8935A"/>
-          <ellipse cx="112" cy="285" rx="13" ry="16" fill="#B07840"/>
-          <ellipse cx="368" cy="285" rx="22" ry="26" fill="#C8935A"/>
-          <ellipse cx="368" cy="285" rx="13" ry="16" fill="#B07840"/>
-          <path d="M145 340 Q160 430 240 445 Q320 430 335 340 Q310 380 240 388 Q170 380 145 340Z" fill="#5C3317"/>
-          <path d="M175 355 Q200 390 240 395 Q280 390 305 355 Q285 375 240 380 Q195 375 175 355Z" fill="#7A4422" opacity="0.5"/>
-          <path d="M200 320 Q220 335 240 332 Q260 335 280 320 Q265 330 240 327 Q215 330 200 320Z" fill="#5C3317"/>
-          <path d="M210 345 Q240 365 270 345" stroke="#7A4422" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <ellipse cx="240" cy="305" rx="20" ry="14" fill="#B07840"/>
-          <circle cx="230" cy="308" r="5" fill="#9A6530" opacity="0.6"/>
-          <circle cx="250" cy="308" r="5" fill="#9A6530" opacity="0.6"/>
-          <ellipse cx="190" cy="265" rx="30" ry="22" fill="#2A1800" opacity="0.15"/>
-          <rect x="158" y="248" width="58" height="40" rx="10" fill="none" stroke="#1A0A00" stroke-width="5"/>
-          <ellipse cx="187" cy="268" rx="22" ry="16" fill="#F5F0E8"/>
-          <circle cx="190" cy="270" r="10" fill="#5C3317"/>
-          <circle cx="190" cy="270" r="6" fill="#3D2410"/>
-          <circle cx="186" cy="266" r="3" fill="#fff" opacity="0.7"/>
-          <rect x="264" y="248" width="58" height="40" rx="10" fill="none" stroke="#1A0A00" stroke-width="5"/>
-          <ellipse cx="293" cy="268" rx="22" ry="16" fill="#F5F0E8"/>
-          <circle cx="292" cy="270" r="10" fill="#5C3317"/>
-          <circle cx="292" cy="270" r="6" fill="#3D2410"/>
-          <circle cx="288" cy="266" r="3" fill="#fff" opacity="0.7"/>
-          <line x1="216" y1="268" x2="264" y2="268" stroke="#1A0A00" stroke-width="5" stroke-linecap="round"/>
-          <line x1="158" y1="265" x2="112" y2="275" stroke="#1A0A00" stroke-width="4.5" stroke-linecap="round"/>
-          <line x1="322" y1="265" x2="368" y2="275" stroke="#1A0A00" stroke-width="4.5" stroke-linecap="round"/>
-          <path d="M162 244 Q190 232 218 242" stroke="#3D2410" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <path d="M262 242 Q292 232 318 244" stroke="#3D2410" stroke-width="5" fill="none" stroke-linecap="round"/>
-          <path d="M95 185 Q240 165 385 185 L380 200 Q240 182 100 200Z" fill="#1A0A00"/>
-          <path d="M110 185 Q140 100 240 90 Q340 100 370 185Z" fill="#E8631A"/>
-          <path d="M240 90 L240 185" stroke="#CF5510" stroke-width="2.5" opacity="0.6"/>
-          <path d="M175 95 Q190 155 200 185" stroke="#CF5510" stroke-width="2" opacity="0.5"/>
-          <path d="M305 95 Q290 155 280 185" stroke="#CF5510" stroke-width="2" opacity="0.5"/>
-          <path d="M310 92 Q360 100 375 185 L390 185 Q385 95 310 85Z" fill="#7A7A7A"/>
-          <path d="M340 95 Q360 130 370 185" stroke="#656565" stroke-width="2" opacity="0.6"/>
-          <circle cx="240" cy="92" r="8" fill="#CF5510"/>
-          <path d="M110 185 Q120 195 130 200 Q240 195 350 200 Q360 195 370 185" fill="#2A1800" opacity="0.3"/>
-          <rect x="18" y="380" width="90" height="32" rx="8" fill="rgba(18,40,232,0.85)"/>
-          <text x="30" y="400" font-family="monospace" font-size="11" fill="#7EA8FF">&lt;dev /&gt;</text>
-          <rect x="370" y="320" width="82" height="30" rx="8" fill="rgba(232,99,26,0.85)"/>
-          <text x="382" y="340" font-family="monospace" font-size="10" fill="#fff">Python</text>
-        </svg>
+  <!-- ===== SKILLS ===== -->
+  <section id="skills">
+    <div class="section">
+      <div class="section-label">Expertise</div>
+      <div class="section-title">What I Build With</div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-label">Languages</div>
+          <div class="skill-card-items">Java · Python · SQL</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">Backend</div>
+          <div class="skill-card-items">Spring Boot · REST APIs · JWT · Hibernate/JPA</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">Databases</div>
+          <div class="skill-card-items">MySQL · MongoDB</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">AI/ML</div>
+          <div class="skill-card-items">TensorFlow · PyTorch · OpenCV · Librosa · MediaPipe</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">Tools</div>
+          <div class="skill-card-items">Git · GitHub · Firebase</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">CS Fundamentals</div>
+          <div class="skill-card-items">Data Structures · OOP · DBMS · Cyber Security</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== SKILLS ===== -->
-<section id="skills">
-  <div class="section">
-    <div class="section-label">Expertise</div>
-    <div class="section-title">What I Build With</div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-label">Languages</div>
-        <div class="skill-card-items">Java · Python · SQL</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">Backend</div>
-        <div class="skill-card-items">Spring Boot · REST APIs · JWT · Hibernate/JPA</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">Databases</div>
-        <div class="skill-card-items">MySQL · MongoDB</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">AI/ML</div>
-        <div class="skill-card-items">TensorFlow · PyTorch · OpenCV · Librosa · MediaPipe</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">Tools</div>
-        <div class="skill-card-items">Git · GitHub · Firebase</div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-label">CS Fundamentals</div>
-        <div class="skill-card-items">Data Structures · OOP · DBMS · Cyber Security</div>
+  <!-- ===== PROJECTS ===== -->
+  <section id="work">
+    <div class="section">
+      <div class="section-label">Selected Projects</div>
+      <div class="section-title">Things I've Built</div>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-period">Mar 2026 — Present</div>
+          <div class="project-name">DeepShield</div>
+          <div class="project-stack">Python · TensorFlow/PyTorch · OpenCV · Librosa · NumPy</div>
+          <ul class="project-desc">
+            <li>Multi-modal deepfake & voice spoofing detection system for real-time identity verification.</li>
+            <li>Processed video frames using OpenCV and extracted MFCC audio features using Librosa.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-period">Jan 2026 — Mar 2026</div>
+          <div class="project-name">Hospital Management System</div>
+          <div class="project-stack">Java · Spring Boot · Hibernate/JPA · MySQL · REST APIs</div>
+          <ul class="project-desc">
+            <li>Backend system to manage patients, doctors, and appointments at scale.</li>
+            <li>Designed REST APIs for registration, scheduling, and medical record handling.</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-period">Jun 2025 — Aug 2025</div>
+          <div class="project-name">Sky Pointer</div>
+          <div class="project-stack">Python · OpenCV · MediaPipe · PyAutoGUI</div>
+          <ul class="project-desc">
+            <li>Hand-gesture-based virtual mouse for real-time cursor control.</li>
+            <li>Implemented gesture recognition for click, drag, and scroll operations.</li>
+          </ul>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== PROJECTS ===== -->
-<section id="work">
-  <div class="section">
-    <div class="section-label">Selected Projects</div>
-    <div class="section-title">Things I've Built</div>
-    <div class="projects-grid">
+  <!-- ===== EDUCATION ===== -->
+  <section id="about" style="background:#070C18;padding:100px 0">
+    <div class="section">
+      <div class="section-label">Education</div>
+      <div class="section-title">Where I Learned</div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div>
+            <div class="edu-name">Pranveer Singh Institute of Technology, Kanpur</div>
+            <div class="edu-sub">B.Tech — Computer Science & Engineering (Cyber Security)</div>
+          </div>
+          <div class="edu-right">
+            <div class="edu-year">2023 — 2027</div>
+            <div class="edu-score">7.0 CGPA</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div>
 
-      <div class="project-card">
-        <div class="project-period">Mar 2026 — Present</div>
-        <div class="project-name">DeepShield</div>
-        <div class="project-stack">Python · TensorFlow/PyTorch · OpenCV · Librosa · NumPy</div>
-        <ul class="project-desc">
-          <li>Multi-modal deepfake & voice spoofing detection system for real-time identity verification.</li>
-          <li>Processed video frames using OpenCV and extracted MFCC audio features using Librosa.</li>
-        </ul>
-      </div>
 
-      <div class="project-card">
-        <div class="project-period">Jan 2026 — Mar 2026</div>
-        <div class="project-name">Hospital Management System</div>
-        <div class="project-stack">Java · Spring Boot · Hibernate/JPA · MySQL · REST APIs</div>
-        <ul class="project-desc">
-          <li>Backend system to manage patients, doctors, and appointments at scale.</li>
-          <li>Designed REST APIs for registration, scheduling, and medical record handling.</li>
-        </ul>
-      </div>
+            <div style="margin-top:70px">
+              <div class="section-label">Achievements & Certifications</div>
+              <div class="section-title" style="font-size:2.5rem;margin-bottom:30px">Wins & Badges</div>
+              <div class="achieve-list">
+                <div class="achieve-item">
+                  <div class="achieve-dot"></div>
+                  <div class="achieve-text">Solved 100+ problems on LeetCode</div>
+                </div>
+                <div class="achieve-item">
+                  <div class="achieve-dot"></div>
+                  <div class="achieve-text">HackerRank certifications in Problem Solving, Python, and SQL</div>
+                </div>
+                <div class="achieve-item">
+                  <div class="achieve-dot"></div>
+                  <div class="achieve-text">Fundamental Programming in Python — Infosys Springboard</div>
+                </div>
+                <div class="achieve-item">
+                  <div class="achieve-dot"></div>
+                  <div class="achieve-text">SQL, HTML5, CSS3 — Infosys Springboard</div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </section>
 
-      <div class="project-card">
-        <div class="project-period">Jun 2025 — Aug 2025</div>
-        <div class="project-name">Sky Pointer</div>
-        <div class="project-stack">Python · OpenCV · MediaPipe · PyAutoGUI</div>
-        <ul class="project-desc">
-          <li>Hand-gesture-based virtual mouse for real-time cursor control.</li>
-          <li>Implemented gesture recognition for click, drag, and scroll operations.</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== EDUCATION ===== -->
-<section id="about" style="background:#070C18;padding:100px 0">
-  <div class="section">
-    <div class="section-label">Education</div>
-    <div class="section-title">Where I Learned</div>
-    <div class="edu-grid">
-      <div class="edu-card">
+  <!-- ===== HACKATHON ===== -->
+  <section id="lab">
+    <div class="section">
+      <div class="section-label">Hackathons</div>
+      <div class="section-title">Under Pressure</div>
+      <div class="hack-card">
         <div>
-          <div class="edu-name">Pranveer Singh Institute of Technology, Kanpur</div>
-          <div class="edu-sub">B.Tech — Computer Science & Engineering (Cyber Security)</div>
+          <div class="project-period" style="margin-bottom:12px">Oct 2025 · HackwithUP 2025</div>
+          <div class="project-name" style="font-size:1.8rem;margin-bottom:10px">Kisan Setu</div>
+          <div class="project-stack" style="margin-bottom:16px">Firebase · Web Platform</div>
+          <ul class="project-desc">
+            <li>Built a platform connecting farmers with buyers using Firebase as the backbone.</li>
+            <li>Contributed to deployment setup and hosting configuration under 24-hour constraints.</li>
+            <li>Secured <strong style="color:#FF8C42">4th place</strong> among 50+ competing teams.</li>
+          </ul>
         </div>
-        <div class="edu-right">
-          <div class="edu-year">2023 — 2027</div>
-          <div class="edu-score">7.0 CGPA</div>
+        <div class="hack-badge">🏆<br>4TH<br>PLACE<br>50+ TEAMS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label" style="color:rgba(255,255,255,0.6)">Get In Touch</div>
+        <div class="section-title">Let's Build<br>Something.</div>
+        <p class="contact-sub">Open to internship roles, freelance projects, and interesting collaborations. Drop me a
+          line — I reply fast.</p>
+        <div class="contact-links">
+          <a href="mailto:aryantiwari2310462@gmail.com" class="contact-link">
+            <span class="contact-link-icon">✉️</span> aryantiwari2310462@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/aryan-t-780630306" class="contact-link" target="_blank">
+            <span class="contact-link-icon">💼</span> linkedin.com/in/aryan-t-780630306
+          </a>
+          <a href="https://github.com/Aryan-0030" class="contact-link" target="_blank">
+            <span class="contact-link-icon">🐙</span> github.com/Aryan-0030
+          </a>
+          <a href="https://github.com/Aryan-0030/portfolio.git" class="contact-link" target="_blank" download>
+            <span class="contact-link-icon">📄</span> Download Resume
+          </a>
         </div>
       </div>
-      <div class="edu-card">
-        <div>
-       
-
-    <div style="margin-top:70px">
-      <div class="section-label">Achievements & Certifications</div>
-      <div class="section-title" style="font-size:2.5rem;margin-bottom:30px">Wins & Badges</div>
-      <div class="achieve-list">
-        <div class="achieve-item"><div class="achieve-dot"></div><div class="achieve-text">Solved 100+ problems on LeetCode</div></div>
-        <div class="achieve-item"><div class="achieve-dot"></div><div class="achieve-text">HackerRank certifications in Problem Solving, Python, and SQL</div></div>
-        <div class="achieve-item"><div class="achieve-dot"></div><div class="achieve-text">Fundamental Programming in Python — Infosys Springboard</div></div>
-        <div class="achieve-item"><div class="achieve-dot"></div><div class="achieve-text">SQL, HTML5, CSS3 — Infosys Springboard</div></div>
+      <div class="contact-form">
+        <input class="form-input" type="text" placeholder="Your Name">
+        <input class="form-input" type="email" placeholder="Your Email">
+        <input class="form-input" type="text" placeholder="Subject">
+        <textarea class="form-input" placeholder="Your message..."></textarea>
+        <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer">Send Message
+          →</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== HACKATHON ===== -->
-<section id="lab">
-  <div class="section">
-    <div class="section-label">Hackathons</div>
-    <div class="section-title">Under Pressure</div>
-    <div class="hack-card">
-      <div>
-        <div class="project-period" style="margin-bottom:12px">Oct 2025 · HackwithUP 2025</div>
-        <div class="project-name" style="font-size:1.8rem;margin-bottom:10px">Kisan Setu</div>
-        <div class="project-stack" style="margin-bottom:16px">Firebase · Web Platform</div>
-        <ul class="project-desc">
-          <li>Built a platform connecting farmers with buyers using Firebase as the backbone.</li>
-          <li>Contributed to deployment setup and hosting configuration under 24-hour constraints.</li>
-          <li>Secured <strong style="color:#FF8C42">4th place</strong> among 50+ competing teams.</li>
-        </ul>
-      </div>
-      <div class="hack-badge">🏆<br>4TH<br>PLACE<br>50+ TEAMS</div>
-    </div>
-  </div>
-</section>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-text">© 2026 <span>Aryan Tiwari</span>. Built with passion from Kanpur, UP.</div>
+    <div class="footer-text">Designed & Developed by <span>Aryan Tiwari</span></div>
+  </footer>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <div class="section-label" style="color:rgba(255,255,255,0.6)">Get In Touch</div>
-      <div class="section-title">Let's Build<br>Something.</div>
-      <p class="contact-sub">Open to internship roles, freelance projects, and interesting collaborations. Drop me a line — I reply fast.</p>
-      <div class="contact-links">
-        <a href="mailto:aryantiwari2310462@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉️</span> aryantiwari2310462@gmail.com
-        </a>
-        <a href="https://www.linkedin.com/in/aryan-t-780630306" class="contact-link" target="_blank">
-          <span class="contact-link-icon">💼</span> linkedin.com/in/aryan-t-780630306
-        </a>
-        <a href="https://github.com/Aryan-0030" class="contact-link" target="_blank">
-          <span class="contact-link-icon">🐙</span> github.com/Aryan-0030
-        </a>
-        <a href="https://github.com/Aryan-0030/portfolio.git" class="contact-link" target="_blank" download>
-          <span class="contact-link-icon">📄</span> Download Resume
-        </a>
-      </div>
-    </div>
-    <div class="contact-form">
-      <input class="form-input" type="text" placeholder="Your Name">
-      <input class="form-input" type="email" placeholder="Your Email">
-      <input class="form-input" type="text" placeholder="Subject">
-      <textarea class="form-input" placeholder="Your message..."></textarea>
-      <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer">Send Message →</button>
-    </div>
-  </div>
-</section>
+  <script>
+    function toggleMenu(el) {
+      el.classList.toggle('open');
+    }
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="footer-text">© 2026 <span>Aryan Tiwari</span>. Built with passion from Kanpur, UP.</div>
-  <div class="footer-text">Designed & Developed by <span>Aryan Tiwari</span></div>
-</footer>
-
-<script>
-  function toggleMenu(el) {
-    el.classList.toggle('open');
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
     });
-  });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-card, .project-card, .edu-card, .achieve-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.skill-card, .project-card, .edu-card, .achieve-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-</script>
+  </script>
 </body>
+
 </html>
